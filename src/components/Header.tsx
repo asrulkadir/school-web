@@ -17,13 +17,19 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "./ui/accordion";
-import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "./ui/sheet";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetHeader,
+  SheetTrigger,
+} from "./ui/sheet";
 import { Button } from "./ui/button";
 
 const navigations = [
   {
     title: "Beranda",
-    href: "#",
+    href: "/",
     subNav: null,
   },
   {
@@ -31,31 +37,27 @@ const navigations = [
     href: "#",
     subNav: [
       {
-        title: "Sejarah",
-        href: "#",
-      },
-      {
-        title: "Visi dan Misi",
-        href: "#",
+        title: "Profil Sekolah",
+        href: "/profile",
       },
       {
         title: "Fasilitas",
-        href: "#",
+        href: "/facility",
       },
       {
         title: "Guru dan Staff",
-        href: "#",
+        href: "/staff",
       },
     ],
   },
   {
     title: "Berita dan Artikel",
-    href: "#",
+    href: "/news",
     subNav: null,
   },
   {
     title: "Galeri",
-    href: "#",
+    href: "/gallery",
     subNav: null,
   },
 ];
@@ -63,9 +65,9 @@ const navigations = [
 const Header = () => {
   return (
     <header>
-      <nav className="border-gray-200 bg-white px-4 py-2.5 dark:bg-gray-800 lg:px-6">
+      <nav className="border-gray-200 px-4 py-2.5 font-bold dark:bg-gray-800 lg:px-6">
         <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between">
-          <Link href="https://flowbite.com" className="flex items-center">
+          <Link href="/" className="flex items-center">
             <Image
               src="https://flowbite.com/docs/images/logo.svg"
               className="mr-3 h-6 sm:h-9"
@@ -74,7 +76,7 @@ const Header = () => {
               height={36}
             />
             <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-              School Name
+              SMP Yapis
             </span>
           </Link>
           <div className="flex items-center lg:order-2 lg:hidden">
@@ -84,7 +86,7 @@ const Header = () => {
                   <IoMenu size={24} />
                 </Button>
               </SheetTrigger>
-              <SheetContent className="bg-white dark:bg-gray-800">
+              <SheetContent>
                 <SheetHeader>
                   <div className="flex flex-col gap-2">
                     {navigations.map((nav, index) => (
@@ -106,14 +108,15 @@ const Header = () => {
                                 </AccordionTrigger>
                                 <AccordionContent className="flex flex-col gap-2">
                                   {nav.subNav.map((subNav, index) => (
-                                    <Link
-                                      href={subNav.href}
-                                      passHref
-                                      key={index}
-                                      className="rounded-md p-2 text-center hover:bg-gray-100 dark:hover:bg-gray-700"
-                                    >
-                                      {subNav.title}
-                                    </Link>
+                                    <SheetClose asChild key={index}>
+                                      <Link
+                                        href={subNav.href}
+                                        passHref
+                                        className="rounded-md p-2 text-center"
+                                      >
+                                        {subNav.title}
+                                      </Link>
+                                    </SheetClose>
                                   ))}
                                 </AccordionContent>
                               </AccordionItem>
@@ -121,14 +124,16 @@ const Header = () => {
                           </div>
                         ) : (
                           <div className="flex flex-col gap-2">
-                            <Link
-                              href={nav.href}
-                              passHref
-                              key={index}
-                              className="rounded-md p-2 text-center text-lg font-bold hover:bg-gray-100 dark:hover:bg-gray-700"
-                            >
-                              {nav.title}
-                            </Link>
+                            <SheetClose asChild>
+                              <Link
+                                href={nav.href}
+                                passHref
+                                key={index}
+                                className="rounded-md p-2 text-center text-lg font-bold"
+                              >
+                                {nav.title}
+                              </Link>
+                            </SheetClose>
                           </div>
                         )}
                       </>
@@ -163,9 +168,9 @@ const Header = () => {
                                   href={subNav.href}
                                   passHref
                                   key={index}
-                                  className="rounded-md p-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+                                  legacyBehavior
                                 >
-                                  <NavigationMenuLink>
+                                  <NavigationMenuLink className="rounded-md p-2 hover:bg-gray-100 dark:hover:bg-gray-700">
                                     {subNav.title}
                                   </NavigationMenuLink>
                                 </Link>

@@ -4,8 +4,10 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* --background: 100 24.42% 33.73%; 
+    --foreground: 152.73 45.83% 62.35%;  */
+    --background: #37512a;
+    --foreground: #a8f5d2;
   }
 }
 
@@ -20,7 +22,7 @@ body {
 }
 
 @layer base {
-  :root {
+  /* :root {
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
     --card: 0 0% 100%;
@@ -45,6 +47,33 @@ body {
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  } */
+  :root {
+    --background: #37512a;
+    --foreground: #a8f5d2;
+    --card: #433b2b;
+    --card-foreground: #b6f3eb;
+    --primary: #d8e3dc;
+    --primary-foreground: #2d4339;
+    --secondary: #848b74;
+    --secondary-foreground: #185c04;
+    --muted: #f1f5f9;
+    --muted-foreground: #64748b;
+    --accent: #ded5b6;
+    --accent-foreground: #0f172a;
+    --popover: #ffffff;
+    --popover-foreground: #020817;
+    --destructive: #ef4444;
+    --destructive-foreground: #f8fafc;
+    --border: #e2e8f0;
+    --input: #e2e8f0;
+    --ring: #020817;
+    --chart-1: #e76e50;
+    --chart-2: #2a9d90;
+    --chart-3: #274754;
+    --chart-4: #e8c468;
+    --chart-5: #f4a462;
     --radius: 0.5rem;
   }
   .dark {

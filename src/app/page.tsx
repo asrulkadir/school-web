@@ -1,6 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import Lottie from "lottie-react";
+import { motion } from "framer-motion";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -8,43 +10,48 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import bgAnimation1 from "@/assets/lottie/bg-animation-1.json";
+import bgAnimation2 from "@/assets/lottie/bg-animation-2.json";
+import bgAnimation3 from "@/assets/lottie/bg-animation-3.json";
+import Link from "next/link";
 
 export default function Home() {
   const dataSlide = [
     {
-      title: "Slide 1",
+      title: "Selamat datang di Sekolah",
       color: "#f00",
     },
     {
-      title: "Slide 2",
+      title: "Selamat datang di Sekolah Slide 2",
       color: "#0f0",
     },
     {
-      title: "Slide 3",
+      title: "Selamat datang di Sekolah Slide 3",
       color: "#00f",
     },
     {
-      title: "Slide 4",
+      title: "Selamat datang di Sekolah Slide 4",
       color: "#ff0",
     },
     {
-      title: "Slide 5",
+      title: "Selamat datang di Sekolah Slide 5",
       color: "#0ff",
     },
     {
-      title: "Slide 6",
+      title: "Selamat datang di Sekolah Slide 6",
       color: "#f0f",
     },
     {
-      title: "Slide 7",
+      title: "Selamat datang di Sekolah Slide 7",
       color: "#f80",
     },
     {
-      title: "Slide 8",
+      title: "Selamat datang di Sekolah Slide 8",
       color: "#808",
     },
     {
-      title: "Slide 9",
+      title: "Selamat datang di Sekolah Slide 9",
       color: "#880",
     },
   ];
@@ -73,7 +80,7 @@ export default function Home() {
                 backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://picsum.photos/1920/1080?random=${index})`,
               }}
             >
-              <h1 className="text-4xl text-white drop-shadow-lg">
+              <h1 className="text-center text-6xl text-white drop-shadow-lg">
                 {slide.title}
               </h1>
             </SwiperSlide>
@@ -82,179 +89,271 @@ export default function Home() {
       </section>
 
       {/* section for profil school, include history, vission and mission */}
-      <section className="container mx-auto mt-8">
-        <div className="flex flex-col items-center gap-4 rounded-lg bg-white p-4 shadow-lg dark:bg-gray-800">
-          <h3 className="text-xl font-semibold">Profil Singkat Sekolah</h3>
-          <p className="text-center text-gray-600 dark:text-gray-400">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-            ultricies, elit id aliquam ultricies, odio odio ultricies elit.
-          </p>
-
-          <div className="grid grid-cols-1 gap-4 rounded-lg bg-white p-4 dark:bg-gray-800 md:grid-cols-2 lg:grid-cols-2">
-            <div>
-              <h3 className="text-center text-xl font-semibold">Visi</h3>
-              <p className="text-center text-gray-600 dark:text-gray-400">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                ultricies, elit id aliquam ultricies, odio odio ultricies elit.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-center text-xl font-semibold">Misi</h3>
-              <p className="text-center text-gray-600 dark:text-gray-400">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                ultricies, elit id aliquam ultricies, odio odio ultricies elit.
-              </p>
+      <section className="relative py-8 lg:h-[50vh]">
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 100,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            duration: 0.5,
+            delay: 0.5,
+            ease: "easeInOut",
+          }}
+          viewport={{ once: true }}
+        >
+          <div className="container relative mx-auto">
+            <Card className="flex flex-col items-center gap-4 rounded-b-[100px] p-4 shadow-lg">
+              <CardContent>
+                <h3 className="text-center text-3xl font-semibold leading-10">
+                  Sekilas Tentang Sekolah
+                </h3>
+                <p className="text-center text-xl leading-10">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Nullam ultricies, elit id aliquam ultricies, odio odio
+                  ultricies elit. Lorem ipsum dolor sit, amet consectetur
+                  adipisicing elit. Ipsum repudiandae voluptates molestias
+                  officiis, nam amet eum, perspiciatis autem enim delectus
+                  laborum. Molestias eveniet quod nostrum, quos omnis voluptates
+                  ea fuga.
+                </p>
+              </CardContent>
+            </Card>
+            <div className="flex justify-center">
+              <Button className="mt-4">
+                <Link href="/profile">Lihat Profil Sekolah</Link>
+              </Button>
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* section for school facility */}
-      <section className="container mx-auto mt-8">
-        <h2 className="text-center text-3xl font-bold">Fasilitas Sekolah</h2>
-        <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-          <div className="flex flex-col items-center gap-4 rounded-lg bg-white p-4 shadow-lg dark:bg-gray-800">
-            <Image
-              src="https://picsum.photos/200/200?random=1"
-              alt="Service 1"
-              width={200}
-              height={200}
-              className="rounded-lg"
-            />
-            <h3 className="text-xl font-semibold">Fasilitas 1</h3>
-            <p className="text-center text-gray-600 dark:text-gray-400">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-              ultricies, elit id aliquam ultricies, odio odio ultricies elit.
-            </p>
+      <section className="relative w-full bg-white py-8 lg:h-[80vh]">
+        <motion.div
+          initial={{
+            opacity: 0,
+          }}
+          whileInView={{
+            opacity: 1,
+          }}
+          transition={{
+            duration: 0.5,
+            delay: 0.15,
+            ease: "easeOut",
+          }}
+          viewport={{ once: true }}
+        >
+          <div className="absolute left-0 top-0 flex w-full justify-between">
+            <Lottie animationData={bgAnimation3} loop={true} />
+            <Lottie animationData={bgAnimation3} loop={true} />
           </div>
-          <div className="flex flex-col items-center gap-4 rounded-lg bg-white p-4 shadow-lg dark:bg-gray-800">
-            <Image
-              src="https://picsum.photos/200/200?random=2"
-              alt="Service 2"
-              width={200}
-              height={200}
-              className="rounded-lg"
-            />
-            <h3 className="text-xl font-semibold">Fasilitas 2</h3>
-            <p className="text-center text-gray-600 dark:text-gray-400">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-              ultricies, elit id aliquam ultricies, odio odio ultricies elit.
-            </p>
+          <div className="container relative mx-auto">
+            <h2 className="text-center text-3xl font-bold text-secondary">
+              Fasilitas Sekolah
+            </h2>
+            <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-3">
+              <Card className="flex flex-col items-center gap-4 rounded-lg p-4 shadow-lg">
+                <Image
+                  src="https://picsum.photos/200/200?random=1"
+                  alt="Service 1"
+                  width={200}
+                  height={200}
+                  className="rounded-lg"
+                />
+                <h3 className="text-xl font-semibold">Fasilitas 1</h3>
+                <p className="text-center">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Nullam ultricies, elit id aliquam ultricies, odio odio
+                  ultricies elit.
+                </p>
+              </Card>
+              <Card className="flex flex-col items-center gap-4 rounded-lg p-4 shadow-lg">
+                <Image
+                  src="https://picsum.photos/200/200?random=2"
+                  alt="Service 2"
+                  width={200}
+                  height={200}
+                  className="rounded-lg"
+                />
+                <h3 className="text-xl font-semibold">Fasilitas 2</h3>
+                <p className="text-center">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Nullam ultricies, elit id aliquam ultricies, odio odio
+                  ultricies elit.
+                </p>
+              </Card>
+              <Card className="flex flex-col items-center gap-4 rounded-lg p-4 shadow-lg">
+                <Image
+                  src="https://picsum.photos/200/200?random=3"
+                  alt="Service 3"
+                  width={200}
+                  height={200}
+                  className="rounded-lg"
+                />
+                <h3 className="text-xl font-semibold">Fasilitas 3</h3>
+                <p className="text-center">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Nullam ultricies, elit id
+                </p>
+              </Card>
+            </div>
+            <div className="flex justify-center">
+              <Button className="mt-4">
+                <Link href="/facility">Lihat Semua Fasilitas</Link>
+              </Button>
+            </div>
           </div>
-          <div className="flex flex-col items-center gap-4 rounded-lg bg-white p-4 shadow-lg dark:bg-gray-800">
-            <Image
-              src="https://picsum.photos/200/200?random=3"
-              alt="Service 3"
-              width={200}
-              height={200}
-              className="rounded-lg"
-            />
-            <h3 className="text-xl font-semibold">Fasilitas 3</h3>
-            <p className="text-center text-gray-600 dark:text-gray-400">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-              ultricies, elit id
-            </p>
-          </div>
-        </div>
-        <div className="flex justify-center">
-          <Button className="mt-4">Lihat Semua Fasilitas</Button>
-        </div>
+        </motion.div>
       </section>
 
       {/* section for teacher and staff */}
-      <section className="container mx-auto mt-8">
-        <h2 className="text-center text-3xl font-bold">Guru dan Staff</h2>
-        <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-          <div className="flex flex-col items-center gap-4 rounded-lg bg-white p-4 shadow-lg dark:bg-gray-800">
-            <Image
-              src="https://picsum.photos/200/200?random=1"
-              alt="Service 1"
-              width={200}
-              height={200}
-              className="rounded-full"
-            />
-            <h3 className="text-xl font-semibold">Guru 1</h3>
+      <section className="relative py-8 lg:h-[75vh]">
+        <motion.div
+          initial={{
+            x: 200,
+          }}
+          whileInView={{
+            x: 0,
+          }}
+          transition={{
+            duration: 0.5,
+            delay: 0.25,
+            ease: "easeOut",
+          }}
+          viewport={{ once: true }}
+        >
+          <div className="absolute left-0 top-0 flex w-full justify-between">
+            <Lottie animationData={bgAnimation2} />
+            <Lottie animationData={bgAnimation2} />
           </div>
-          <div className="flex flex-col items-center gap-4 rounded-lg bg-white p-4 shadow-lg dark:bg-gray-800">
-            <Image
-              src="https://picsum.photos/200/200?random=2"
-              alt="Service 2"
-              width={200}
-              height={200}
-              className="rounded-full"
-            />
-            <h3 className="text-xl font-semibold">Guru 2</h3>
+          <div className="container relative mx-auto">
+            <h2 className="text-center text-3xl font-bold">Guru dan Staff</h2>
+            <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-3">
+              <Card className="flex flex-col items-center gap-4 rounded-lg bg-black bg-opacity-50 p-4 shadow-lg">
+                <Image
+                  src="https://picsum.photos/200/200?random=1"
+                  alt="Service 1"
+                  width={200}
+                  height={200}
+                  className="rounded-full"
+                />
+                <h3 className="text-xl font-semibold">Guru 1</h3>
+              </Card>
+              <Card className="flex flex-col items-center gap-4 rounded-lg bg-black bg-opacity-50 p-4 shadow-lg">
+                <Image
+                  src="https://picsum.photos/200/200?random=2"
+                  alt="Service 2"
+                  width={200}
+                  height={200}
+                  className="rounded-full"
+                />
+                <h3 className="text-xl font-semibold">Guru 2</h3>
+              </Card>
+              <Card className="flex flex-col items-center gap-4 rounded-lg bg-black bg-opacity-50 p-4 shadow-lg">
+                <Image
+                  src="https://picsum.photos/200/200?random=3"
+                  alt="Service 3"
+                  width={200}
+                  height={200}
+                  className="rounded-full"
+                />
+                <h3 className="text-xl font-semibold">Guru 3</h3>
+              </Card>
+            </div>
+            <div className="relative flex justify-center">
+              <Button className="mt-4">
+                <Link href="/staff">Lihat Semua Guru dan Staff</Link>
+              </Button>
+            </div>
           </div>
-          <div className="flex flex-col items-center gap-4 rounded-lg bg-white p-4 shadow-lg dark:bg-gray-800">
-            <Image
-              src="https://picsum.photos/200/200?random=3"
-              alt="Service 3"
-              width={200}
-              height={200}
-              className="rounded-full"
-            />
-            <h3 className="text-xl font-semibold">Guru 3</h3>
-          </div>
-        </div>
-        <div className="flex justify-center">
-          <Button className="mt-4">Lihat Semua Guru dan Staff</Button>
-        </div>
+        </motion.div>
       </section>
 
       {/* News and arcticles */}
-      <section>
-        <div className="container mx-auto mt-8">
-          <h2 className="mt-8 text-center text-3xl font-bold">
-            Berita dan Artikel
-          </h2>
-          <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-            <div className="flex flex-col items-center gap-4 rounded-lg bg-white p-4 shadow-lg dark:bg-gray-800">
-              <Image
-                src="https://picsum.photos/200/200?random=1"
-                alt="Service 1"
-                width={200}
-                height={200}
-                className="rounded-lg"
-              />
-              <h3 className="text-xl font-semibold">Berita 1</h3>
-              <p className="text-center text-gray-600 dark:text-gray-400">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                ultricies, elit id aliquam ultricies, odio odio ultricies elit.
-              </p>
-            </div>
-            <div className="flex flex-col items-center gap-4 rounded-lg bg-white p-4 shadow-lg dark:bg-gray-800">
-              <Image
-                src="https://picsum.photos/200/200?random=2"
-                alt="Service 2"
-                width={200}
-                height={200}
-                className="rounded-lg"
-              />
-              <h3 className="text-xl font-semibold">Berita 2</h3>
-              <p className="text-center text-gray-600 dark:text-gray-400">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                ultricies, elit id aliquam ultricies, odio odio ultricies elit.
-              </p>
-            </div>
-            <div className="flex flex-col items-center gap-4 rounded-lg bg-white p-4 shadow-lg dark:bg-gray-800">
-              <Image
-                src="https://picsum.photos/200/200?random=3"
-                alt="Service 3"
-                width={200}
-                height={200}
-                className="rounded-lg"
-              />
-              <h3 className="text-xl font-semibold">Berita 3</h3>
-              <p className="text-center text-gray-600 dark:text-gray-400">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                ultricies, elit id aliquam ultricies, odio odio ultricies elit.
-              </p>
+      <section className="relative w-full bg-white py-8 lg:h-[80vh]">
+        <motion.div
+          initial={{
+            x: -200,
+            opacity: 0,
+          }}
+          whileInView={{
+            x: 0,
+            opacity: 1,
+          }}
+          transition={{
+            duration: 0.5,
+            delay: 0.25,
+            ease: "easeIn",
+            bounce: 0.5,
+          }}
+          viewport={{ once: true }}
+        >
+          <div className="absolute bottom-0 top-[-25px]">
+            <Lottie animationData={bgAnimation1} loop={true} />
+          </div>
+          <div className="container relative mx-auto mt-8">
+            <h2 className="mt-8 text-center text-3xl font-bold text-secondary">
+              Berita dan Artikel
+            </h2>
+            <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-3">
+              <Card className="flex flex-col items-center gap-4 rounded-lg p-4 shadow-lg">
+                <Image
+                  src="https://picsum.photos/200/200?random=1"
+                  alt="Service 1"
+                  width={200}
+                  height={200}
+                  className="rounded-lg"
+                />
+                <h3 className="text-xl font-semibold">Berita 1</h3>
+                <p className="text-center">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Nullam ultricies, elit id aliquam ultricies, odio odio
+                  ultricies elit.
+                </p>
+              </Card>
+              <Card className="flex flex-col items-center gap-4 rounded-lg p-4 shadow-lg">
+                <Image
+                  src="https://picsum.photos/200/200?random=2"
+                  alt="Service 2"
+                  width={200}
+                  height={200}
+                  className="rounded-lg"
+                />
+                <h3 className="text-xl font-semibold">Berita 2</h3>
+                <p className="text-center">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Nullam ultricies, elit id aliquam ultricies, odio odio
+                  ultricies elit.
+                </p>
+              </Card>
+              <Card className="flex flex-col items-center gap-4 rounded-lg p-4 shadow-lg">
+                <Image
+                  src="https://picsum.photos/200/200?random=3"
+                  alt="Service 3"
+                  width={200}
+                  height={200}
+                  className="rounded-lg"
+                />
+                <h3 className="text-xl font-semibold">Berita 3</h3>
+                <p className="text-center">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Nullam ultricies, elit id aliquam ultricies, odio odio
+                  ultricies elit.
+                </p>
+              </Card>
             </div>
           </div>
-        </div>
-        <div className="flex justify-center">
-          <Button className="mt-4">Lihat Semua Berita dan Artikel</Button>
-        </div>
+          <div className="relative flex justify-center">
+            <Button className="mt-4">
+              <Link href="/news">Lihat Semua Berita dan Artikel</Link>
+            </Button>
+          </div>
+        </motion.div>
       </section>
     </div>
   );
