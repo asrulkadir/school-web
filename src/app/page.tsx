@@ -15,6 +15,7 @@ import bgAnimation1 from "@/assets/lottie/bg-animation-1.json";
 import bgAnimation2 from "@/assets/lottie/bg-animation-2.json";
 import bgAnimation3 from "@/assets/lottie/bg-animation-3.json";
 import Link from "next/link";
+import BlogCard from "@/components/BlogCard";
 
 export default function Home() {
   const dataSlide = [
@@ -53,6 +54,27 @@ export default function Home() {
     {
       title: "Selamat datang di Sekolah Slide 9",
       color: "#880",
+    },
+  ];
+
+  const articles = [
+    {
+      title: "Lorem Ipsum Dolor Sit Amet",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies, elit id aliquam ultricies, odio odio ultricies elit.",
+      image: "https://picsum.photos/200/200?random=1",
+    },
+    {
+      title: "Lorem Ipsum Dolor Sit Amet",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies, elit id aliquam ultricies, odio odio ultricies elit.",
+      image: "https://picsum.photos/200/200?random=2",
+    },
+    {
+      title: "Lorem Ipsum Dolor Sit Amet",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies, elit id aliquam ultricies, odio odio ultricies elit.",
+      image: "https://picsum.photos/200/200?random=3",
     },
   ];
   return (
@@ -234,7 +256,7 @@ export default function Home() {
           <div className="container relative mx-auto">
             <h2 className="text-center text-3xl font-bold">Guru dan Staff</h2>
             <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-3">
-              <Card className="flex flex-col items-center gap-4 rounded-lg bg-black bg-opacity-50 p-4 shadow-lg">
+              <div className="flex flex-col items-center gap-4 rounded-lg p-4">
                 <Image
                   src="https://picsum.photos/200/200?random=1"
                   alt="Service 1"
@@ -243,8 +265,8 @@ export default function Home() {
                   className="rounded-full"
                 />
                 <h3 className="text-xl font-semibold">Guru 1</h3>
-              </Card>
-              <Card className="flex flex-col items-center gap-4 rounded-lg bg-black bg-opacity-50 p-4 shadow-lg">
+              </div>
+              <div className="flex flex-col items-center gap-4 rounded-lg p-4">
                 <Image
                   src="https://picsum.photos/200/200?random=2"
                   alt="Service 2"
@@ -253,8 +275,8 @@ export default function Home() {
                   className="rounded-full"
                 />
                 <h3 className="text-xl font-semibold">Guru 2</h3>
-              </Card>
-              <Card className="flex flex-col items-center gap-4 rounded-lg bg-black bg-opacity-50 p-4 shadow-lg">
+              </div>
+              <div className="flex flex-col items-center gap-4 rounded-lg p-4">
                 <Image
                   src="https://picsum.photos/200/200?random=3"
                   alt="Service 3"
@@ -263,7 +285,7 @@ export default function Home() {
                   className="rounded-full"
                 />
                 <h3 className="text-xl font-semibold">Guru 3</h3>
-              </Card>
+              </div>
             </div>
             <div className="relative flex justify-center">
               <Button className="mt-4">
@@ -301,51 +323,14 @@ export default function Home() {
               Berita dan Artikel
             </h2>
             <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-3">
-              <Card className="flex flex-col items-center gap-4 rounded-lg p-4 shadow-lg">
-                <Image
-                  src="https://picsum.photos/200/200?random=1"
-                  alt="Service 1"
-                  width={200}
-                  height={200}
-                  className="rounded-lg"
+              {articles.map((article, index) => (
+                <BlogCard
+                  key={index}
+                  title={article.title}
+                  description={article.description}
+                  image={article.image}
                 />
-                <h3 className="text-xl font-semibold">Berita 1</h3>
-                <p className="text-center">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Nullam ultricies, elit id aliquam ultricies, odio odio
-                  ultricies elit.
-                </p>
-              </Card>
-              <Card className="flex flex-col items-center gap-4 rounded-lg p-4 shadow-lg">
-                <Image
-                  src="https://picsum.photos/200/200?random=2"
-                  alt="Service 2"
-                  width={200}
-                  height={200}
-                  className="rounded-lg"
-                />
-                <h3 className="text-xl font-semibold">Berita 2</h3>
-                <p className="text-center">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Nullam ultricies, elit id aliquam ultricies, odio odio
-                  ultricies elit.
-                </p>
-              </Card>
-              <Card className="flex flex-col items-center gap-4 rounded-lg p-4 shadow-lg">
-                <Image
-                  src="https://picsum.photos/200/200?random=3"
-                  alt="Service 3"
-                  width={200}
-                  height={200}
-                  className="rounded-lg"
-                />
-                <h3 className="text-xl font-semibold">Berita 3</h3>
-                <p className="text-center">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Nullam ultricies, elit id aliquam ultricies, odio odio
-                  ultricies elit.
-                </p>
-              </Card>
+              ))}
             </div>
           </div>
           <div className="relative flex justify-center">

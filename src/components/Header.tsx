@@ -90,7 +90,7 @@ const Header = () => {
                 <SheetHeader>
                   <div className="flex flex-col gap-2">
                     {navigations.map((nav, index) => (
-                      <>
+                      <div key={index}>
                         {nav.subNav ? (
                           <div className="flex flex-col gap-2">
                             <Accordion key={index} type="multiple">
@@ -136,7 +136,7 @@ const Header = () => {
                             </SheetClose>
                           </div>
                         )}
-                      </>
+                      </div>
                     ))}
                   </div>
                 </SheetHeader>
